@@ -1,19 +1,19 @@
-import { View, Image, StyleSheet, Text, StatusBar } from 'react-native'
+import {Image} from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../Screens/Home'
-import Search from '../Screens/Search'
-import AddEvent from '../Screens/AddEvent'
-import MyEvents from '../Screens/MyEvents'
-import Profile from '../Screens/Profile'
 
+import AddEvent from '../Screens/AddEvent'
+import BillSharing from '../Screens/BillSharing'
+import Profile from '../Screens/Profile'
+import TransactionScreen from '../Screens/TransactionScreen';
+import MainNavigation from './MainNavigation';
 
 const Tab = createBottomTabNavigator();
-
 const TabNavigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
     <Tab.Navigator
     screenOptions={{
       headerShown: false,
@@ -36,18 +36,18 @@ const TabNavigator = () => {
         tabBarIcon: ({size, focused}) => {
           return (
             <Image
-              style={{ width: size, height: size, tintColor: focused ? '#439DFEE8' : 'white' }}
+              style={{  width: focused ? 30 : size, height: focused ? 30 : size , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
               source={require('../assets/homeIcon.png')}
             />
           );
         },
       }}/>
-      <Tab.Screen name='Search' component={Search} 
+      <Tab.Screen name='Search' component={TransactionScreen} 
       options={{
         tabBarIcon: ({size, focused}) => {
           return (
             <Image
-              style={{ width: size, height: size , tintColor: focused ? '#439DFEE8' : 'white'}}
+              style={{  width: focused ? 30 : size*1.1, height: focused ? 30 : size*1.1 , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
               source={require('../assets/icons/swipe-card.png')}
             />
           );
@@ -55,21 +55,21 @@ const TabNavigator = () => {
       }}/>
       <Tab.Screen name='Add Event' component={AddEvent} 
       options={{
-        tabBarIcon: ({size, focused}) => {
+        tabBarIcon: ({ size, focused}) => {
           return (
             <Image
-              style={{ width: 45, height: 45 , tintColor: focused ? '#439DFEE8' : 'white'}}
+              style={{  width: focused ? 30 : size*1.2, height: focused ? 30 : size*1.2 , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
               source={require('../assets/add.png')}
             />
           );
         },
       }}/>
-      <Tab.Screen name='My Events' component={MyEvents} 
+      <Tab.Screen name='My Events' component={MainNavigation} 
       options={{
         tabBarIcon: ({size, focused}) => {
           return (
             <Image
-              style={{ width: size, height: size , tintColor: focused ? '#439DFEE8' : 'white'}}
+              style={{ width: focused ? 30 : size, height: focused ? 30 : size , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
               source={require('../assets/icons/transaction.png')}
             />
           );
@@ -80,12 +80,13 @@ const TabNavigator = () => {
         tabBarIcon: ({size, focused}) => {
           return (
             <Image
-              style={{ width: size, height: size , tintColor: focused ? '#439DFEE8' : 'white'}}
+              style={{  width: focused ? 30 : size, height: focused ? 30 : size , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
               source={require('../assets/user.png')}
             />
           );
         },
       }}/>
+
     </Tab.Navigator>
     </NavigationContainer>
     

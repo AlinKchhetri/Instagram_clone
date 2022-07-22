@@ -1,94 +1,125 @@
-import { View, Text , ImageBackground, Dimensions, FlatList} from 'react-native'
-import React, {useEffect, useState} from 'react'
+import { View, Text , ImageBackground, FlatList, StyleSheet, TouchableWithoutFeedback, Dimensions} from 'react-native'
+import React from 'react'
+
 
 const cardDetails = [
     {
       id: '1',
       bankName: 'NIC Asia Bank Ltd.',
-      cardNumer: '1234 1234 1234 1234',
+      cardNumber: '1111 1111 1111 1111',
       expiryDate: '03/25',
-      holderName: 'Alin Khatri'
+      holderName: 'Alin Khatri',
+      image : require('../assets/images/card.png')
     },
-];
+    {
+        id: '2',
+        bankName: 'Global IME Bank Ltd.',
+        cardNumber: '2222 2222 2222 2222',
+        expiryDate: '05/25',
+        holderName: 'Alin Khatri',
+        image : require('../assets/images/card.png')
+    },
+    {
+        id: '3',
+        bankName: 'Nabil Bank Ltd.',
+        cardNumber: '3333 3333 3333 3333',
+        expiryDate: '04/25',
+        holderName: 'Alin Khatri',
+        image : require('../assets/images/card.png')
+    },
+  ];
 
-const Card = () => {
+const imageWidth = 325;
+const imageHeight = 196;
 
-    const [cardDetails, setCardDetails] = useState([]);
 
-    useEffect(() => {
-        let cardDetails = [
-            {
-                id: '1',
-                bankName: 'NIC Asia Bank Ltd.',
-                cardNumer: '1234 1234 1234 1234',
-                expiryDate: '03/25',
-                holderName: 'Alin Khatri'
-              },
-        ];
-        setCardDetails(cardDetails);
-      }, []);
+const Card = ({navigation}) => {
+    return (
+    <View style={styles.cardSection}>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data = {cardDetails}
+          renderItem = {(card) => {
+            return (
+              <TouchableWithoutFeedback
+                onPress={()=> {
+                  navigation.navigate('Profile')
+                }}
+              >
+              <View style={{
+                marginBottom: 20,
+                paddingLeft: 20,
+              }}>
+                <ImageBackground source={card.item.image}
+                resizeMode='cover'
+                borderRadius={15}
+                style={{
+                    width: Dimensions.get('window').width -100,
+                    height: ((Dimensions.get('window').width -100) * imageHeight ) / imageWidth,
+                  justifyContent: 'space-between',
+                  margin: 10,
+                }}>
 
-  return (
-    <View style={{
-        top: Dimensions.get('window').width * 0.2,
-        // marginHorizontal: 20,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }} >
-        <ImageBackground 
-        resizeMode='cover'
-        style={{
-          width: Dimensions.get('window').width -75,
-          height: Dimensions.get('window').height -530,
-          
-        }}
-        source={require('../assets/images/card.png')}>
-            {cardDetails.map((detail) => {
-                return (
+
+                <View style={{
+                    width: Dimensions.get('window').width -100,
+                    height: ((Dimensions.get('window').width -100) * imageHeight ) / imageWidth,
+                    padding: 15,
+                  }}>
+                    <View style={{
+                      top: 10,
+                      left: 50,
+                    }}>
+                      <Text style={{
+                        color: 'white',
+                        fontFamily: 'ProductSansBlack',
+                        fontSize: 15,
+
+                      }}>{card.item.bankName}</Text>
+                    </View>
                     <View style={{
                         flex: 1,
+                        justifyContent: 'center',
+                        padding: 10,
+                        top: 20,
                     }}>
-                        <Text style={{
-                            color: 'white',
-                            fontFamily: 'ProductSansBold',
-                            fontSize: 17,
-                            marginHorizontal: 40,
-                            top: 27,
-                            left: 35,
-                        }}
-                        key ={detail.id}>{detail.bankName}</Text>
-                        <View style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            margin:27,
-
-                        }}>
-                            <Text style={{
-                                color: 'white',
-                                fontFamily: 'ProductSansBold',
-                                top: 70,
-                                fontSize: 25,
-                            }}>{detail.cardNumer}</Text>
-                            <Text style={{
-                                color: 'white',
-                                fontFamily: 'ProductSans',
-                                top: 75,
-                                fontSize: 15,
-                            }}>{detail.expiryDate}</Text>
-                            <Text style={{
-                                color: 'white',
-                                fontFamily: 'ProductSans',
-                                top: 78,
-                                fontSize: 18,
-                            }}>{detail.holderName}</Text>
-                        </View>
+                      <Text style={{
+                        color: 'white',
+                        fontFamily: 'ProductSansBold',
+                        fontSize: 22,
+                      }}>{card.item.cardNumber}</Text>
+                      <Text style={{
+                        color: 'white',
+                        fontFamily: 'ProductSans',
+                        fontSize: 13,
+                        top: 7,
+                      }}>{card.item.expiryDate}</Text>
+                      <Text style={{
+                        color: 'white',
+                        fontFamily: 'ProductSans',
+                        fontSize: 17,
+                        top: 14,
+                      }}>{card.item.holderName}</Text>
                     </View>
-                )
-            })}
-            
-        </ImageBackground>
-    </View>
-  )
-}
+                  </View>
+                </ImageBackground>
+              </View>
+              </TouchableWithoutFeedback>
+            )
+          }}
+        />
+      </View>
+    )
+};
 
-export default Card
+
+const styles = StyleSheet.create({
+    cardSection:{
+      flex: 1,
+      justifyContent: 'space-between'
+
+    }
+})
+
+export default Card;

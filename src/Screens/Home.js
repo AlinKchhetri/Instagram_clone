@@ -1,37 +1,9 @@
-import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, Image, FlatList, ImageBackground, TouchableWithoutFeedback, ScrollView, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Image, FlatList, ImageBackground, TouchableWithoutFeedback, Dimensions } from 'react-native'
+import { ScrollView } from 'react-native-virtualized-view';
 import React from 'react'
 import { useFonts } from 'expo-font'
 import Card from '../components/Card';
-
-
-const data = [
-  {
-    id: '1',
-    title: 'Sajjan Raj Vaidya',
-    date: 'July 30',
-    type: 'Concert',
-    image : require('../assets/images/sajjan.jpg')
-  },
-  {
-    id: '2',
-    title: 'Albatross LIVE',
-    date: 'Dec 08',
-    type: 'Concert',
-    image : require('../assets/images/albatross.jpg')
-  },
-  {
-    id: '3',
-    title: 'Concert',
-    date: 'April 03',
-    type: 'Concert',
-    image : require('../assets/images/event_1.png')
-  },
-];
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
-
+import Transaction from '../components/Transactions';
 
 
 const Home = ({navigation}) => {
@@ -49,7 +21,8 @@ const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView
+      showsVerticalScrollIndicator ={false}>
         <View style={styles.WelcomeText}>
         <TouchableOpacity 
         onPress={() => {
@@ -64,7 +37,8 @@ const Home = ({navigation}) => {
         <View style={{
           display: 'flex',
           flexDirection: 'column',
-          right: windowWidth/ 5.5,
+          justifyContent: 'center',
+          alignContent: 'flex-start'
         }}>
           <Text style={styles.WelcomeTitle}>Welcome!</Text>
           <Text style={{
@@ -120,8 +94,7 @@ const Home = ({navigation}) => {
         <View style={{
           display: 'flex',
           flexDirection: 'column',
-          marginHorizontal: 10,
-          right: windowWidth /9,
+
         }}>
           <Text style={styles.SpendingTitle}>Spending Limit</Text>
           <Text style={{
@@ -161,8 +134,22 @@ const Home = ({navigation}) => {
         </View>
 
         {/* Credit Card Section */}
-          <View>
+        <View>
         < Card />
+        </View>
+
+        {/* Transaction Section */}
+
+        <View>
+        <Text style={{
+            color: 'white',
+            paddingBottom: 15,
+            justifyContent: 'center',
+            left:30,
+            fontFamily: 'ProductSansBold',
+            fontSize: 18,
+        }}>Recent Transactions</Text>
+          <Transaction />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -190,14 +177,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'ProductSans',
     opacity: 0.6,
-    
+    textAlign: 'center'
   },
   SpendingText: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    top: 50,
-    marginHorizontal: 40,
+    justifyContent: 'space-around',
+    paddingTop: 50,
+    paddingBottom: 20,
   },
   SpendingTitle: {
     fontSize: 15,

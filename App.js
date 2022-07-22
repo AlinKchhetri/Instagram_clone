@@ -3,13 +3,15 @@ import {
   Text,
   View,
 } from 'react-native';
-import TabNavigator from './src/navigation/TabNavigator'
+import MainNavigation from './src/navigation/MainNavigation';
+import TabNavigator from './src/navigation/TabNavigator';
 
 
 
 const App = () => {
   
-  return  <TabNavigator />
+  return <TabNavigator />
+
 };
 
 
