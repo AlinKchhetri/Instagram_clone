@@ -1,1 +1,1 @@
-# EventUI
+# EXPENSE TRACKER APP
