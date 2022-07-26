@@ -44,7 +44,7 @@ const BillSharing = ({navigation}) => {
           borderRadius: 25,
         }}
         onPress={() => {
-          navigation.navigate('addgroup')
+          navigation.navigate('add')
         }}>
           <Image source={require('../assets/add.png')} 
           style={{

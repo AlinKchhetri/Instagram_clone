@@ -6,6 +6,7 @@ import Groups from '../components/Groups';
 import BillSharing from '../Screens/BillSharing';
 import Split from '../Screens/BillSharing/Split';
 import AddGroup from '../Screens/BillSharing/AddGroup';
+import Add from '../Screens/BillSharing/Add';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ const MainNavigation = () =>{
         <Stack.Screen name='SplitUI' component={Split}/>
         <Stack.Screen name='group' component={Groups}/>
         <Stack.Screen name='addgroup' component={AddGroup}/>
+        <Stack.Screen name='add' component={Add}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
