@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Image, FlatList, ImageBackground, TouchableWithoutFeedback, Dimensions } from 'react-native'
 import { ScrollView } from 'react-native-virtualized-view';
-import React from 'react'
+import React  from 'react'
 import { useFonts } from 'expo-font'
 import Card from '../components/Card';
 import Transaction from '../components/Transactions';
 
 
 const Home = ({navigation}) => {
+
 
 
   const [loaded] = useFonts({

@@ -1,10 +1,14 @@
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native'
-import React, {useState} from 'react'
+import { StyleSheet, Text, View, FlatList, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
+import React, {useEffect, useState} from 'react'
+import { useNavigation } from '@react-navigation/native';
 import {transactionDetails} from '../../components/Groups.js'
 
 const Split = () => {
 
-    const [text, setText] = useState('');
+  const navigation = useNavigation();
+
+  const [text, setText] = useState('');
+
 
   return (
     <View style={{
@@ -12,17 +16,29 @@ const Split = () => {
         justifyContent: 'center',
         alignItems: 'center'
     }}>
+
+      <TouchableOpacity 
+        style={{
+          backgroundColor: '#1f1f1f',
+          width: 50,
+          height:50,
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 25,
+        }}
+        onPress={() => {navigation.navigate('add')} }>
+          <Image source={require('../../assets/add.png')} 
+          style={{
+            width: 25,
+            height: 25,
+          }}/>
+        </TouchableOpacity>
+
+        {/* <FlatList 
+          data={json}
+        /> */}
+
     
-    {/* <FlatList
-          data = {transactionDetails}
-          keyExtractor={(item , index) => item.id.toString()}
-          renderItem = {(transaction) => {
-            return (
-                <Text>{transaction.item.groupName}</Text>
-            )
-          }
-        }
-    /> */}
 
     <TextInput
         style={{height: 40, backgroundColor: 'red', color: 'white', width: 200}}

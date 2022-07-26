@@ -1,4 +1,4 @@
-import { View, Text , FlatList, StyleSheet, TouchableWithoutFeedback, Dimensions, Image, TouchableOpacity} from 'react-native'
+import { View, Text , FlatList, StyleSheet, TouchableWithoutFeedback, Alert, Dimensions, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 
@@ -60,11 +60,17 @@ const Groups = () => {
 
     const navigation = useNavigation();
 
+    const selectGroup = (id) => {
+      Alert.alert(id);
+      navigation.navigate('SplitUI')
+    }
+  
     return (
     <View style={styles.transactionSection}>
         
         <FlatList
           data = {transactionDetails}
+          keyExtractor={item => item.id}
           renderItem = {(transaction) => {
             return (
               <View style={{
@@ -138,9 +144,7 @@ const Groups = () => {
                     alignSelf: 'center',
                     right: 20,
                     }}
-                    onPress={() => {
-                    navigation.navigate('SplitUI')
-                    }}>
+                    onPress={() => selectGroup(transaction.item.id)}>
                     <Text style ={{
                         color: 'white',
                         fontFamily: 'ProductSansBold',
