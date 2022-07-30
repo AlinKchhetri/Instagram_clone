@@ -1,12 +1,7 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Card from '../components/Card';
-import Groups from '../components/Groups';
-import BillSharing from '../Screens/BillSharing';
-import Split from '../Screens/BillSharing/Split';
-import AddGroup from '../Screens/BillSharing/AddGroup';
-import Add from '../Screens/BillSharing/Add';
+import BillSharing from '../Screens/Reels';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,10 +15,6 @@ const MainNavigation = () =>{
       }}
       initialRouteName='BillIndex'>
         <Stack.Screen name='BillIndex' component={BillSharing}/>
-        <Stack.Screen name='SplitUI' component={Split}/>
-        <Stack.Screen name='group' component={Groups}/>
-        <Stack.Screen name='addgroup' component={AddGroup}/>
-        <Stack.Screen name='add' component={Add}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -3,12 +3,10 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../Screens/Home'
-
-import AddEvent from '../Screens/AddEvent'
-import BillSharing from '../Screens/BillSharing'
 import Profile from '../Screens/Profile'
-import TransactionScreen from '../Screens/TransactionScreen';
-import MainNavigation from './MainNavigation';
+import Shop from '../Screens/Shop'
+import Explore from '../Screens/Explore';
+import Reels from '../Screens/Reels';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
@@ -20,68 +18,63 @@ const TabNavigator = () => {
       tabBarShowLabel: false,
       tabBarStyle: { 
         position: 'absolute', 
-        height: 111, 
-        backgroundColor: '#121212', 
-        opacity: 0.9,
-        borderRadius: 30,
-        bottom: -10,
-        left: 0,
-        right: 0,
-        elevation: 0,
-        borderTopWidth: 0,
+        height: 84, 
+        backgroundColor: '#000', 
+        borderColor: '#262626',
+        borderTopWidth: 0
       },
     }}>
       <Tab.Screen name='Home' component={Home} 
       options={{
-        tabBarIcon: ({size, focused}) => {
+        tabBarIcon: () => {
           return (
             <Image
-              style={{  width: focused ? 30 : size, height: focused ? 30 : size , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
-              source={require('../assets/homeIcon.png')}
+              style={{  width: 22, height: 22}}
+              source={require('../assets/DarkMode/home.png')}
             />
           );
         },
       }}/>
-      <Tab.Screen name='Search' component={TransactionScreen} 
+      <Tab.Screen name='Search' component={Explore} 
       options={{
-        tabBarIcon: ({size, focused}) => {
+        tabBarIcon: () => {
           return (
             <Image
-              style={{  width: focused ? 30 : size*1.1, height: focused ? 30 : size*1.1 , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
-              source={require('../assets/icons/swipe-card.png')}
+              style={{  width: 22, height: 22 }}
+              source={require('../assets/DarkMode/search.png')}
             />
           );
         },
       }}/>
-      <Tab.Screen name='Add Event' component={AddEvent} 
+      <Tab.Screen name='Post' component={Reels} 
       options={{
-        tabBarIcon: ({ size, focused}) => {
+        tabBarIcon: () => {
           return (
             <Image
-              style={{  width: focused ? 30 : size*1.2, height: focused ? 30 : size*1.2 , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
-              source={require('../assets/add.png')}
+              style={{  width: 22, height: 22}}
+              source={require('../assets/DarkMode/reel.png')}
             />
           );
         },
       }}/>
-      <Tab.Screen name='My Events' component={MainNavigation} 
+      <Tab.Screen name='Shop' component={Shop} 
       options={{
-        tabBarIcon: ({size, focused}) => {
+        tabBarIcon: () => {
           return (
             <Image
-              style={{ width: focused ? 30 : size, height: focused ? 30 : size , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
-              source={require('../assets/icons/transaction.png')}
+              style={{ width: 22, height: 24 }}
+              source={require('../assets/DarkMode/shop.png')}
             />
           );
         },
       }}/>
       <Tab.Screen name='Profile' component={Profile} 
       options={{
-        tabBarIcon: ({size, focused}) => {
+        tabBarIcon: () => {
           return (
             <Image
-              style={{  width: focused ? 30 : size, height: focused ? 30 : size , tintColor: focused ? '#439DFEE8' : 'white', bottom: focused ? 5 : 0}}
-              source={require('../assets/user.png')}
+              style={{  width: 22, height: 22}}
+              source={require('../assets/DarkMode/user.png')}
             />
           );
         },

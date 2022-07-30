@@ -4,6 +4,7 @@ import React from 'react'
 const Profile = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={{fontFamily: 'RobotoRegular'}}>Profile</Text>
       <Text>Profile</Text>
     </View>
   )
